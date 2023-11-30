@@ -2,6 +2,7 @@ from airflow import DAG
 from airflow.models.param import Param
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from airflow.utils.dates import days_ago
 
 default_args = {
@@ -19,13 +20,6 @@ dag = DAG(
     'True_Corp_hive_data_load',
     default_args=default_args,
     schedule_interval=None,
-    tags=['e2e example', 'ezaf', 'spark', 'csv', 'parquet', 'fts'],
-    params={
-        'training_path': Param("financial-processed", type="string"),
-        's3_secret_name': Param("spark-s3-creds", type="string"),
-        'airgap_registry_url': Param("", type=["null", "string"], pattern=r"^$|^\S+/$")
-    },
-    render_template_as_native_obj=True,
     access_control={
         'All': {
             'can_read',
@@ -35,21 +29,15 @@ dag = DAG(
     }
 )
 
-submit = SparkKubernetesOperator(
-    task_id='submit',
-    application_file="example_ezaf_spark_csv_to_parquet_fts.yaml",
-    do_xcom_push=True,
-    dag=dag,
-    api_group="sparkoperator.hpe.com",
-    enable_impersonation_from_ldap_user=True
+submit_job = SparkSubmitOperator(
+    task_id='submit_job',
+    application= '/scripts/hive_dataload.py',
+    conn_id = 'spartk_con1'
+    total_executor_cores='1',
+    executor_memory='2g',
+    num_executor='1',
+    driver_memory='2g',
+    verobose=False
 )
 
-sensor = SparkKubernetesSensor(
-    task_id='monitor',
-    application_name="{{ task_instance.xcom_pull(task_ids='submit')['metadata']['name'] }}",
-    dag=dag,
-    api_group="sparkoperator.hpe.com",
-    attach_log=True
-)
-
-submit >> sensor
+submit 
