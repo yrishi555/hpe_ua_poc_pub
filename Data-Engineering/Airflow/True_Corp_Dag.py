@@ -36,7 +36,7 @@ submit_job = SparkSubmitOperator(
     total_executor_cores='1',
     executor_cores='1',
     executor_memory='2g',
-    num_executor='1',
+    num_executors='1',
     driver_memory='2g',
     verobose=False
 )
