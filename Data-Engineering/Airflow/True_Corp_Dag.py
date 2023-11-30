@@ -35,6 +35,7 @@ load_data_job = SparkSubmitOperator(
     task_id='load_data_job',
     dag=dag,
     application= '/scripts/hive_dataload.py',
+    env_vars={'PATH': '/bin:/usr/bin:/usr/local/bin'},
     conn_id = 'spark_con1',
     total_executor_cores='1',
     executor_cores='1',
