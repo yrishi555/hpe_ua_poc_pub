@@ -20,6 +20,7 @@ dag = DAG(
     'True_Corp_hive_data_load',
     default_args=default_args,
     schedule_interval=None,
+    tags=['e2e example', 'ezaf', 'spark', 'csv', 'parquet', 'fts'],
     render_template_as_native_obj=True,
     access_control={
         'All': {
