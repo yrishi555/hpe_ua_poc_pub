@@ -29,8 +29,8 @@ dag = DAG(
     }
 )
 
-submit_job = SparkSubmitOperator(
-    task_id='submit_job',
+load_data_job = SparkSubmitOperator(
+    task_id='load_data_job',
     application= '/scripts/hive_dataload.py',
     conn_id = 'spark_con1',
     total_executor_cores='1',
@@ -41,4 +41,16 @@ submit_job = SparkSubmitOperator(
     verbose=False
 )
 
-submit_job 
+check_data_job = SparkSubmitOperator(
+    task_id='check_data_job',
+    application= '/scripts/hive_dataload.py',
+    conn_id = 'spark_con1',
+    total_executor_cores='1',
+    executor_cores='1',
+    executor_memory='2g',
+    num_executors='1',
+    driver_memory='2g',
+    verbose=False
+)
+
+load_data_job >> check_data_job 
