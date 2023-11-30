@@ -34,6 +34,7 @@ submit_job = SparkSubmitOperator(
     application= '/scripts/hive_dataload.py',
     conn_id = 'spark_con1'
     total_executor_cores='1',
+    executor_cores='1',
     executor_memory='2g',
     num_executor='1',
     driver_memory='2g',
