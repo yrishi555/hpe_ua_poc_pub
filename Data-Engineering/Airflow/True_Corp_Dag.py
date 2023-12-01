@@ -64,4 +64,4 @@ check_data_job = SparkSubmitOperator(
     verbose=False
 )
 
-test_task >> load_data_job >> check_data_job
+load_data_job >> check_data_job
