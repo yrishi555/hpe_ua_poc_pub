@@ -34,7 +34,7 @@ dag = DAG(
 
 test_task = BashOperator(
     task_id='test_task',
-    bash_command='ls -l /opt/mapr/spark/ ',
+    bash_command='find / -name spark-submit ',
     dag=dag
 )
 
