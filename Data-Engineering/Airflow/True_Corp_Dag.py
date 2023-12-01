@@ -34,7 +34,7 @@ dag = DAG(
 
 test_task = BashOperator(
     task_id='test_task',
-    bash_command='ll /opt/mapr/spark/ ',
+    bash_command='ls -l /opt/mapr/spark/ ',
     dag=dag
 )
 
