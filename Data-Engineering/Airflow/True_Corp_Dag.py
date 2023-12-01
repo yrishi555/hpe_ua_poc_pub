@@ -32,7 +32,7 @@ dag = DAG(
     }
 )
 
-test_task = BashOperator(
+test_bash_task = BashOperator(
     task_id='test_task',
     bash_command='ll /opt/mapr/spark/ ',
     dag=dag
