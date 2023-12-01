@@ -32,11 +32,11 @@ dag = DAG(
     }
 )
 
-test_task = BashOperator(
-    task_id='test_task',
-    bash_command='find / -name spark-submit ',
-    dag=dag
-)
+#test_task = BashOperator(
+#    task_id='test_task',
+#    bash_command='find / -name spark-submit ',
+#    dag=dag
+#)
 
 load_data_job = SparkSubmitOperator(
     task_id='load_data_job',
