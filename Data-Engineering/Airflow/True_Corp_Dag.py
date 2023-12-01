@@ -4,6 +4,7 @@ from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKu
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from airflow.utils.dates import days_ago
+from airflow.operators.bash_operator import BashOperator
 
 default_args = {
     'owner': 'airflow',
@@ -29,6 +30,12 @@ dag = DAG(
             'can_delete'
         }
     }
+)
+
+test_task = BashOperator(
+    task_id='test_task',
+    bash_command='ll /opt/mapr/spark/ ',
+    dag=dag
 )
 
 load_data_job = SparkSubmitOperator(
@@ -57,4 +64,4 @@ check_data_job = SparkSubmitOperator(
     verbose=False
 )
 
-load_data_job >> check_data_job
+test_task >> load_data_job >> check_data_job
