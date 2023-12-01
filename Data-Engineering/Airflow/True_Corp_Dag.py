@@ -35,7 +35,6 @@ dag = DAG(
 test_task = BashOperator(
     task_id='test_task',
     bash_command='hostname ',
-    bash_command='ip a ',
     dag=dag
 )
 
