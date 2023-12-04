@@ -47,7 +47,6 @@ task2=SparkKubernetesOperator(
     task_id='Spark_etl_submit',
     application_file="True_Corp_spark_etl.yaml",
     do_xcom_push=True,
-    conn_id = 'spark_con1',
     dag=dag,
     api_group="sparkoperator.hpe.com",
     enable_impersonation_from_ldap_user=True
