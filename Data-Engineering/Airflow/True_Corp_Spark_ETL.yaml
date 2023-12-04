@@ -7,7 +7,7 @@ spec:
     spark.driver.cores: "2"
     spark.executor.cores: "2"
     spark.driver.memory: "1000M"
-    spark.executor.memory": "1000M"
+    spark.executor.memory: "1000M"
     spark.ssl.enabled: "false"
     spark.driver.extraClassPath: /mnt/shared/spark/disable-chunk-encoding-334.jar
     spark.executor.extraClassPath: /mnt/shared/spark/disable-chunk-encoding-334.jar
