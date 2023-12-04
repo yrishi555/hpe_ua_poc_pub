@@ -49,6 +49,7 @@ task2=SparkKubernetesOperator(
     do_xcom_push=True,
     dag=dag,
     api_group="sparkoperator.hpe.com",
+    kubernetes_conn_id='k8s'
     enable_impersonation_from_ldap_user=True
 )
 task3 = PythonOperator(
