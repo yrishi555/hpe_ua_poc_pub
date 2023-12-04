@@ -38,11 +38,11 @@ def start_job():
 def end_job():
     print("Data Loading to S3 Done...")
 
-task1 = PythonOperator(
-    task_id='Start_Data_Reading',
-    python_callable=start_job,
-    dag=dag,
-)
+# task1 = PythonOperator(
+#     task_id='Start_Data_Reading',
+#     python_callable=start_job,
+#     dag=dag,
+# )
 task2=SparkKubernetesOperator(
     task_id='Spark_etl_submit',
     application_file="True_Corp_spark_etl.yaml",
@@ -57,4 +57,4 @@ task3 = PythonOperator(
     python_callable=end_job,
     dag=dag,
 )
-task1>>task2>> task3
+task2>> task3
