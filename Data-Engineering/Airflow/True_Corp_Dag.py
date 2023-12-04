@@ -33,9 +33,9 @@ dag = DAG(
 )
 
 test_task = BashOperator(
-    task_id='test_task',
-    bash_command='hostname ',
-    dag=dag
+   task_id='test_task',
+   bash_command='hostname ',
+   dag=dag
 )
 
 load_data_job = SparkSubmitOperator(
@@ -63,5 +63,6 @@ check_data_job = SparkSubmitOperator(
     driver_memory='2g',
     verbose=False
 )
+
 
 test_task >> load_data_job >> check_data_job

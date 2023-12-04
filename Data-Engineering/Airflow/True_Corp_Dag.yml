@@ -1,5 +1,0 @@
-apiVersion: "sparkoperator.hpe.com/v1beta2"
-kind: SparkApplication
-metadata:
-  name: spark-fts-{{ts_nodash|replace("T", "")}}
-spec:
