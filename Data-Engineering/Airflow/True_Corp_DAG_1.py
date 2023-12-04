@@ -49,7 +49,7 @@ task2=SparkKubernetesOperator(
     do_xcom_push=True,
     dag=dag,
     api_group="sparkoperator.hpe.com",
-    kubernetes_conn_id='spark_con1',
+    spark_kubernetes_conn_id='spark_con1',
     enable_impersonation_from_ldap_user=True
 )
 
