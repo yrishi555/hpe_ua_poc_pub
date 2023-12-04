@@ -43,10 +43,10 @@ task1 = PythonOperator(
     python_callable=start_job,
     dag=dag,
 )
-
+v
 task2=SparkKubernetesOperator(
     task_id='Spark_etl_submit',
-    application_file="spark_etl_new.yaml",
+    application_file="True_Corp_spark_etl.yaml",
     do_xcom_push=True,
     dag=dag,
     api_group="sparkoperator.hpe.com",
