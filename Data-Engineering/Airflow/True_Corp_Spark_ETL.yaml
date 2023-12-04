@@ -20,7 +20,6 @@ spec:
     spark.hadoop.fs.s3a.path.style.access: "true"
     spark.hadoop.fs.s3a.impl: "org.apache.hadoop.fs.s3a.S3AFileSystem"
     spark.hadoop.fs.s3a.connection.ssl.enabled: "false"
-    spark.hadoop.fs.s3a.s3.client.factory.impl: org.apache.hadoop.fs.s3a.NonChunkedDefaultS3ClientFactory
     spark.hadoop.fs.s3a.access.key: "PO93KAAP2YTG4RHMG499FENAFWYUH9Q91XOJYQ6UNY4R0XUVY35A53L47"
     spark.hadoop.fs.s3a.secret.key: "UV0H7MFJI96MCFY03IMD9X6ZT8H43B3GDS8SXGA4Z7FH0QT2DSZV3ZCKTHS93Z"
     spark.hadoop.fs.s3a.endpoint: "https://54.251.141.200:9000"
