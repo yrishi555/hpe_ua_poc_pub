@@ -53,7 +53,7 @@ spec:
   mode: cluster
   image: "gcr.io/mapr-252711/spark-py-3.4.1:v3.4.1"
   imagePullPolicy: Always
-  mainApplicationFile: "local:///mnt/shared/spark/hive_dataload.py"
+  mainApplicationFile: "local:///mnt/shared/spark_scripts/hive_dataload.py"
   restartPolicy:
     type: Never
   imagePullSecrets:
