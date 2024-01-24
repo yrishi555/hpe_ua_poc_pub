@@ -14,15 +14,11 @@ default_args = {
     'retry_delay': timedelta(minutes=1),
 }
 dag = DAG(
-    'Truecorp_spark-etl',
+    'Rafael_spark-etl',
     default_args=default_args,
     description='Banking-data-demo',
     schedule_interval=None,
     tags=['e2e example','ETL', 'spark'],
-    # params={
-    #     'username': Param("hpedemo-user01", type="string"),
-    #     's3_secret_name': Param("spark-s3-creds", type="string")
-    # },
     access_control={
         'All': {
             'can_read',
@@ -45,7 +41,7 @@ task1 = PythonOperator(
 )
 task2=SparkKubernetesOperator(
     task_id='Spark_etl_submit',
-    application_file="True_Corp_Spark_ETL.yaml",
+    application_file="Rafael_Spark_ETL.yaml",
     do_xcom_push=True,
     dag=dag,
     api_group="sparkoperator.hpe.com",
